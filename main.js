@@ -20,11 +20,16 @@ tasksDiv.addEventListener("click", (e) => {
   if (e.target.classList.contains("del")) {
     e.target.parentElement.remove();
     deleteTasksWith(e.target.parentElement.getAttribute("data-id"));
+    //new
+    if (tasksDiv.children[0].className == "delAll") {
+      tasksDiv.children[0].remove();
+    }
   }
   if (e.target.classList.contains("task")) {
     e.target.classList.toggle("done");
     togleStatusTaskWith(e.target.getAttribute("data-id"));
   }
+  //new
   if (e.target.classList.contains("delAll")) {
     deleteAllTasks();
   }
@@ -59,10 +64,13 @@ function addElementsToPageFrom(arrayOfTasks) {
     div.appendChild(span);
     tasksDiv.appendChild(div);
   });
-  let deleteall = document.createElement("span");
-  deleteall.className = "delAll";
-  deleteall.appendChild(document.createTextNode("DeleteAll"));
-  tasksDiv.appendChild(deleteall);
+  //new
+  if (tasksDiv.children.length !== 0) {
+    let deleteall = document.createElement("span");
+    deleteall.className = "delAll";
+    deleteall.appendChild(document.createTextNode("DeleteAll"));
+    tasksDiv.appendChild(deleteall);
+  }
 }
 
 //Add to Local
@@ -93,7 +101,10 @@ function togleStatusTaskWith(taskId) {
   addDataToLocalStorageFrom(arrayOfTasks);
 }
 
+//new
 function deleteAllTasks() {
   tasksDiv.innerHTML = "";
+  arrayOfTasks = [];
+  addDataToLocalStorageFrom(arrayOfTasks);
   window.localStorage.removeItem("tasks");
 }
