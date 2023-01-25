@@ -1,0 +1,82 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+}
+.container {
+  margin: 20px auto;
+  width: 600px;
+}
+.form {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.tasks,
+.form {
+  padding: 30px;
+  background-color: gold;
+  margin: 20px auto;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+.input,
+.add,
+.task {
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  padding: 6px;
+  outline: none;
+  letter-spacing: 0.5px;
+}
+.add,
+.del,
+.delAll {
+  cursor: pointer;
+}
+
+.form .input {
+  width: 340px;
+}
+.form .add {
+  width: 140px;
+  text-align: center;
+  background-color: red;
+  color: white;
+}
+.tasks {
+  position: relative;
+}
+.tasks .task {
+  background-color: white;
+  position: relative;
+}
+.tasks .task:not(:last-child) {
+  margin-bottom: 10px;
+}
+.tasks .done {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+.tasks .task:hover {
+  background-color: #f7f7f7;
+}
+
+.tasks .task .del,
+.tasks .delAll {
+  font-size: 16px;
+  text-align: center;
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
+  position: absolute;
+  right: 6px;
+  border: none;
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+.tasks .task:hover .del {
+  background-color: red;
+}
